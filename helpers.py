@@ -25,5 +25,30 @@ def update_fam_file(my_file) -> None:
   fam_df = fam_df.drop(columns="id") # drop the dummy column
   fam_df.to_csv(my_file, header = False, index = False, sep = " ") # replaces old .fam file with new .fam file 
   
-  
+def get_hg38_bim(old_bim: str, liftover_output: str, new_bim: str):
+    '''This function is used to lift over a .bim file 
+    in hg19/GrCh37 format to the more recent hg38/
+    GrCh38 build. Returns a .bim file in the PLINK 
+    binary format that can be used for statistical tests 
+    and analyses. 
+    
+    Parameters:
+    old_bim -- The .bim file in the GrCh37 format
+    liftover_output -- The output file from the liftOver tool in 
+    Linux/MacOS. This file may have the extension .bed, 
+    but it is not the same as a binary PLINK .bed file.
+    new_bim -- The name of the new .bim file in hg38 format. 
+    '''
+    old = pd.read_csv(old_bim, sep="\t", header = None)
+    new = pd.read_csv(liftover_output, sep="\t", header= None)
+    # rename columns in bim files for merging efficiency 
+    old.columns = ["chr", "rsid", "pos", "bp", "allele1", "allele2"]
+    new.columns = ["chr", "start", "end", "rsid"]
+    merged = pd.merge(new, old, on="rsid")
+    # drop unnecessary columns 
+    merged = merged.drop(columns=["end", "chr_y", "bp"])
+    # swap columns to be in the correct .bim format 
+    columns_to_reindex = ["chr_x", "rsid", "pos", "start", "allele1", "allele2"]
+    merged = merged.reindex(columns=columns_to_reindex)
+    merged.to_csv(new_bim, header=False, index=False, sep = " ")
   

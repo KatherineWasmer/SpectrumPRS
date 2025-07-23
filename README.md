@@ -41,7 +41,11 @@ plink --bfile myFile --recode-vcf --out myFile
 
 bgzip -c myFile.vcf > myFile.vcf.gz
 
-# Index vcf
+# Sort vcf by base pair
+
+bcftools sort myFile.vcf.gz 
+
+# Index vcf for merging 
 
 tabix -p vcf myFile.vcf.gz
 ```

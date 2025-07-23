@@ -74,10 +74,10 @@ vcftools --vcf --myFile.vcf --out --myFile --plink
 ```
 module avail anaconda
 module load anaconda/{myVersion}
+conda create -n {myEnv} python={myVersion} -y
 ```
-Restart your terminal (yes, this includes having to go through Duo again 🤬) 
+Restart your terminal (yes, this includes having to go through Duo again 🤬) and initiative your session 
 
 ```
-conda create -n {myEnv} python={myVersion} -y
 conda activate {myEnv} 
 ```

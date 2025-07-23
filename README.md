@@ -51,5 +51,5 @@ tabix -p vcf myFile.vcf.gz
 Note: phenotypes do not always cross over when converting files, so you will want to save your phenotype data to a text file (see data_cleaning.py). 
 
 ```
-plink --file --vcf myFile.vcf.gz --make-bed --out myFile 
+plink --file --vcf myFile.vcf.gz --make-bed --out myFile --pheno myPhenos.txt
 ```

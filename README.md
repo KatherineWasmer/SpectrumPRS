@@ -69,7 +69,7 @@ plink --file --vcf myFile.vcf.gz --make-bed --out myFile --pheno myPhenos.txt
 vcftools --vcf --myFile.vcf --out --myFile --plink 
 ```
 
-#### Run a local conda 
+### Run a local conda 
 
 ```
 module avail anaconda

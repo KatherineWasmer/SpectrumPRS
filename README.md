@@ -1,10 +1,6 @@
 # Polygenic Risk Scoring for ASD 
 This is the source code for my MDS Capstone project at the University of Michigan. 
 
-### Data sets and sampling 
-
-### Useful command lines
-
 ### Data sets and sampling  
 
 [Saudi Dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE221098)
@@ -22,6 +18,8 @@ This is the source code for my MDS Capstone project at the University of Michiga
 - Controls: 15
 
 ### Useful command lines 
+
+Working with Linux on an HPC is a learning curve, so I compiled a masterlist of commands that are common in computational genomics. 
 #### Relevant modules 📂
 
 ```
@@ -71,3 +69,14 @@ vcftools --vcf --myFile.vcf --out --myFile --plink
 ```
 
 #### Run a local conda 
+
+```
+module avail anaconda
+module load anaconda/{myVersion}
+```
+Restart your terminal (yes, this includes having to go through Duo again 🤬) 
+
+```
+conda create -n {myEnv} python={myVersion} -y
+conda activate {myEnv} 
+```

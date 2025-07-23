@@ -12,7 +12,7 @@ def get_new_ids(id_with_underscores: str) -> str:
     ids = id_with_underscores.split("_") 
     return ids[0]
 
-def update_fam_file(my_file) -> None:
+def correct_fam_file(my_file) -> None:
   '''If the individual ids in the .fam file contain underscores, you cannot effectively convert plink binary to vcf. 
 
   Parameters: 

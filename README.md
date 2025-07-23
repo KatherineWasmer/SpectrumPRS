@@ -1,5 +1,5 @@
 # prs_autism
-This is my source code for my capstone project, including any helper functions that may be useful to other bioinformatics students! :) 
+This is my source code for my capstone project, including any helper functions and commands that may be useful to other bioinformatics students! :) 
 
 ### Data sets and sampling  
 
@@ -32,9 +32,7 @@ module load samtools
 module load htslib
 ```
 
-#### File conversions  
-
-myFile.bim, myFile.bed, myFile.fam ➡️ myFile.vcf 
+#### Convert Plink binary to VCF ▶️
 
 ```
 plink --bfile myFile --recode-vcf --out myFile
@@ -46,4 +44,12 @@ bgzip -c myFile.vcf > myFile.vcf.gz
 # Index vcf
 
 tabix -p vcf myFile.vcf.gz
+```
+
+#### Convert Plink VCF to binary ◀️ 
+
+Note: phenotypes do not always cross over when converting files, so you will want to keep a record of your phenotype data. You can update your bim file using my helpers function. 
+
+```
+plink --file --vcf myFile.vcf.gz --make-bed --out myFile 
 ```

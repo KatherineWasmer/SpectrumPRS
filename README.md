@@ -1,5 +1,7 @@
-# prs_autism
-This is my source code for my capstone project, including any helper functions and commands that may be useful to other bioinformatics students! :) 
+# Polygenic Risk Scoring for ASD 
+This is the source code for my MDS Capstone project at the University of Michigan. 
+
+### Data sets and sampling 
 
 ### Data sets and sampling  
 
@@ -65,3 +67,5 @@ plink --file --vcf myFile.vcf.gz --make-bed --out myFile --pheno myPhenos.txt
 ```
 vcftools --vcf --myFile.vcf --out --myFile --plink 
 ```
+
+#### Run a local conda 

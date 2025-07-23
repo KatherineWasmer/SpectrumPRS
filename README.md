@@ -18,12 +18,32 @@ This is my source code for my capstone project, including any helper functions t
 - Controls: 15
 
 ### Useful command lines 
-```module load Bioinformatics```
+#### Relevant modules 📂
 
-```module load plink/1.9```
+```
+module load Bioinformatics
 
-```module load bcftools```
+module load plink/1.9
 
-```module load samtools```
+module load bcftools
 
-```module load htslib```
+module load samtools
+
+module load htslib
+```
+
+#### File conversions  
+
+myFile.bim, myFile.bed, myFile.fam ➡️ myFile.vcf 
+
+```
+plink --bfile myFile --recode-vcf --out myFile
+
+# Compress vcf file
+
+bgzip -c myFile.vcf > myFile.vcf.gz
+
+# Index vcf
+
+tabix -p vcf myFile.vcf.gz
+```

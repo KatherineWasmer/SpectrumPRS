@@ -30,6 +30,8 @@ module load bcftools
 module load samtools
 
 module load htslib
+
+module load vcftools 
 ```
 
 #### Convert Plink binary to VCF ▶️
@@ -56,4 +58,10 @@ Note: phenotypes do not always cross over when converting files, so you will wan
 
 ```
 plink --file --vcf myFile.vcf.gz --make-bed --out myFile --pheno myPhenos.txt
+```
+
+### Get .ped, .map, and .fam files 🗺️
+
+```
+vcftools --vcf --myFile.vcf --out --myFile --plink 
 ```

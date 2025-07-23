@@ -15,3 +15,10 @@ This is my source code for my capstone project, including any helper functions t
 [LaSalle Dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi)
 - Cases: 41 
 - Controls: 15
+
+### Useful command lines 
+```module load Bioinformatics```
+```module load plink/1.9```
+```module load bcftools```
+```module load samtools```
+```module load htslib```

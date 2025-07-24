@@ -66,7 +66,9 @@ plink --file --vcf myFile.vcf.gz --make-bed --out myFile --pheno myPhenos.txt
 ### Get .ped, .map, and .fam files 🗺️
 
 ```
-vcftools --vcf --myFile.vcf --out --myFile --plink 
+vcftools --vcf myFile.vcf --out --myFile --plink # for unzipped files
+
+vcftools --gzvcf myFile.vcf.gz --out --myFile --plink # for zipped files 
 ```
 
 ### Run a local conda 

@@ -78,13 +78,14 @@ vcftools --gzvcf myFile.vcf.gz --out myFile --plink # for zipped files
 
 ### Run a local conda 
 
+Create conda environment 
 ```
 module avail anaconda
 module load anaconda/{myVersion}
 conda create -n {myEnv} python={myVersion} -y
 ```
-Restart your terminal (yes, this includes having to go through Duo again 🤬) and initiate your session 
 
+Initiate your environment 
 ```
 conda activate {myEnv} 
 ```

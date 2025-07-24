@@ -76,7 +76,7 @@ module avail anaconda
 module load anaconda/{myVersion}
 conda create -n {myEnv} python={myVersion} -y
 ```
-Restart your terminal (yes, this includes having to go through Duo again 🤬) and initiative your session 
+Restart your terminal (yes, this includes having to go through Duo again 🤬) and initiate your session 
 
 ```
 conda activate {myEnv} 

@@ -1,7 +1,7 @@
 # Polygenic Risk Scoring for ASD 
 This is the source code for my MDS Capstone project at the University of Michigan. 
 
-### Data sets and sampling  
+## Data sets and sampling  
 
 [Saudi Dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE221098)
 - Cases: n = 22
@@ -15,11 +15,11 @@ This is the source code for my MDS Capstone project at the University of Michiga
 - Cases: n = 41 
 - Controls: n = 15
 
-### Useful command lines 
+## Useful command lines 
 
 Working with Linux on an HPC is a learning curve, so I compiled a masterlist of commands that are common in computational genomics. These may be helpful if you do any sort of scientific computing at the University of Michigan! 
 
-#### Relevant modules 📂
+### Relevant modules 📂
 
 ```
 module load Bioinformatics
@@ -35,7 +35,7 @@ module load htslib
 module load vcftools 
 ```
 
-#### Convert Plink binary to VCF ▶️
+### Convert Plink binary to VCF ▶️
 
 ```
 plink --bfile myFile --recode-vcf --out myFile
@@ -56,7 +56,7 @@ Index vcf for merging
 tabix -p vcf myFile.vcf.gz
 ```
 
-#### Convert Plink VCF to binary ◀️ 
+### Convert Plink VCF to binary ◀️ 
 
 Note: phenotypes do not always cross over when converting files, so you will want to save your phenotype data to a text file (see data_cleaning.py). 
 

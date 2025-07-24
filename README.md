@@ -7,15 +7,13 @@ This is the source code for my MDS Capstone project at the University of Michiga
 - Cases: n = 22
 - Controls: n = 51 
 
-[Japanese Dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE144918)
-
-[Converted PLINK binary format](https://drive.google.com/drive/folders/1lvV8p_2tUnx8iuFxe6-sSpm8CBmYSJs4) - credit to Genarchivist forum user teepean 
+[Japanese Dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE144918) & [Converted PLINK binary format](https://drive.google.com/drive/folders/1lvV8p_2tUnx8iuFxe6-sSpm8CBmYSJs4) - credit to Genarchivist forum user teepean 
 - Cases: n = 68
 - Controls: n = 124
 
 [LaSalle Dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi)
-- Cases: 41 
-- Controls: 15
+- Cases: n = 41 
+- Controls: n = 15
 
 ### Useful command lines 
 
@@ -41,17 +39,20 @@ module load vcftools
 
 ```
 plink --bfile myFile --recode-vcf --out myFile
+```
 
-# Compress vcf file
-
+Compress vcf file 
+```
 bgzip -c myFile.vcf > myFile.vcf.gz
+```
 
-# Sort vcf by base pair
+Sort vcf by base pair
+```
+bcftools sort myFile.vcf.gz
+```
 
-bcftools sort myFile.vcf.gz 
-
-# Index vcf for merging 
-
+Index vcf for merging  
+```
 tabix -p vcf myFile.vcf.gz
 ```
 

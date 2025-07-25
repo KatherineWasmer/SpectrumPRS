@@ -56,6 +56,11 @@ Index vcf for merging
 tabix -p vcf myFile.vcf.gz
 ```
 
+Merge vcf files 
+```
+bcftools merge file1.vcf.gz file2.vcf.gz ... filen.vcf.gz -Oz -o merged.vcf.gz
+```
+
 ### Convert Plink VCF to binary ◀️ 
 
 Note: phenotypes do not always cross over when converting files, so you will want to save your phenotype data to a text file (see data_cleaning.py). 

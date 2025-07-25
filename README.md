@@ -81,7 +81,17 @@ vcftools --vcf myFile.vcf --out myFile --plink
 vcftools --gzvcf myFile.vcf.gz --out myFile --plink # for zipped files 
 ```
 
-### Run a local conda 
+### File cleaning 🧹
+
+Filter only by common SNPs (useful for dimensionality reduction techniques). 
+
+```
+maf_threshold = 0.01 # can change to 0.05 if you want to reduce more 
+bcftools view -m2 -M2 -v snps {myFile}.vcf.gz | \
+bcftools filter -e 'INFO/AF < 0.01 || INFO/AF > 0.05' -Oz -o {myFile}.filtered.vcf.gz
+```
+
+### Run a local conda 🐍
 
 Create conda environment 
 ```

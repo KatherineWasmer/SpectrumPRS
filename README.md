@@ -48,7 +48,7 @@ bgzip -c myFile.vcf > myFile.vcf.gz
 
 Sort vcf by base pair
 ```
-bcftools sort myFile.vcf.gz
+bcftools sort myFile.vcf.gz -o myFile.sorted.vcf.gz 
 ```
 
 Index vcf for merging  

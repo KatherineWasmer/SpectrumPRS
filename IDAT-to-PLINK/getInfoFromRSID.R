@@ -10,5 +10,3 @@ getInfoFromRSID <- function(rsidFile, outputFile){
              mart = snp_mart)
   write.table(new_df, outputFile, quote = FALSE, row.names = FALSE) # compatible with PLINK format 
 }
-
-snp_mart <- useMart(biomart="ENSEMBL_MART_SNP", host="https://grch37.ensembl.org", path = "/biomart/martservice", dataset="hsapiens_snp")

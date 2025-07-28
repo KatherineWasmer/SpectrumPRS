@@ -15,6 +15,11 @@ This is the source code for my MDS Capstone project at the University of Michiga
 - Cases: n = 41 
 - Controls: n = 15
 
+## Cloud Computing Resources ☁️
+
+- Great Lakes: I found this cluster to be especially useful when working with command lines (see next section), particularly with PLINK.
+- Galaxy: This solves the issue of waiting for hours for your Python or R job to start in Great Lakes! You can sign up with your university (or any other) Google account and get 250 GB of free storage. Galaxy includes R (4.4) and Bioconductor (3.12), which saves the trouble of installing Bioconductor dependencies on your Great Lakes cluster. 
+
 ## Useful command lines 
 
 Working with Linux on an HPC is a learning curve, so I compiled a masterlist of commands that are common in computational genomics. These may be helpful if you do any sort of scientific computing at the University of Michigan! 

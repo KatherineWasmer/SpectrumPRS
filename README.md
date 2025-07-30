@@ -108,7 +108,7 @@ This is especially useful for Python modules that use large amounts of data from
 Create conda environment 
 ```
 module avail anaconda
-module load {pythonVersion}
+module load {pythonVersion}-anaconda/{YYYY.MM}
 conda create -n {myEnv} python={pythonVersion} -y
 ```
 

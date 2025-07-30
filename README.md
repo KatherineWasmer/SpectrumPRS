@@ -102,13 +102,14 @@ Print the chromosomes included in the VCF file. Sometimes during merging, there 
 bcftools view -H {myFile}.vcf.gz | cut -f1 | sort | uniq
 ```
 
-### Run a local conda 🐍
+### Run a local conda 🐍 
+This is especially useful for Python modules that use large amounts of data from the 1000 Genomes project and HGDP for ancestry inference. 
 
 Create conda environment 
 ```
 module avail anaconda
-module load anaconda/{myVersion}
-conda create -n {myEnv} python={myVersion} -y
+module load {pythonVersion}
+conda create -n {myEnv} python={pythonVersion} -y
 ```
 
 Initiate your environment 

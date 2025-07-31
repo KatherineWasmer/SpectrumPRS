@@ -11,4 +11,5 @@ Please enter the prefix of your BED/BIM/FAM files.
 
 {yourPrefix} 
 
-VCF conversion done!``` 
+VCF conversion done!
+``` 

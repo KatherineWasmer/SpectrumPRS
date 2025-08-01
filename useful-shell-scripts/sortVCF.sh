@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
 
-module load bcftools  
-bcftools sort myFile.vcf.gz -o myFile.sorted.vcf.gz 
+module load Bioinformatics 
+module load bcftools
+extension = "sorted" 
+$1 # file name argument 
+bcftools sort $1 -o {$sorted}{$1}

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# run this through ChatGPT later for debugging 
 
 module load Bioinformatics 
 module load bcftools 

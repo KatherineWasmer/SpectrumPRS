@@ -40,4 +40,13 @@ def split_TSV_by_chromosome(catTSVFixed: str):
   '''
   for i in range(1, 23): 
     catTSVFixed[catTSVFixed["CHR"] == i].to_csv(f"chr{i}_{catTSVFixed}", sep=" ", index=False)
+
+def get_bayesian_PRS(chrom: int, bed: str, stats: str):
+  '''Returns the bayesian PRS array for a single chromosome. Can be looped for every chromosome'''
+  gdl = mgp.GWADataLoader(bed_files = bed, sumstats_files = stats, sumstats_format = "GWASCatalog")
+  gdl.compute_ld(estimator="sample", output_dir="output")
+  v = vp.VIPRS(gdl)
+  v.fit()
+  results = v.predict()
+  return results 
   

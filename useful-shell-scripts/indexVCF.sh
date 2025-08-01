@@ -1,4 +1,5 @@
+module load Bioinformatics 
 module load samtools 
 module load tabix 
 
-tabix -p vcf myFile.vcf.gz
+tabix -p vcf $1 

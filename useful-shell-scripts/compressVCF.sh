@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
+module load Bioinformatics 
 module load bcftools 
-echo Please input your VCF file. 
-read myFile
 extension = ".vcf.gz"
-bgzip -c $myFile > ${myFile}${extension}
+bgzip -c $1 > {$1}{$extension}

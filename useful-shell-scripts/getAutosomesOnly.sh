@@ -3,6 +3,9 @@
 
 module load Bioinformatics 
 module load bcftools 
+module load samtools 
+module load htslib 
+
 pfx = "sorted" 
 at = "at" # autosomal 
 # sort vcf 

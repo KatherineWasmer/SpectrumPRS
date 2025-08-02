@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-module load Bioinformatics 
-module load bcftools 
+module load htslib 
 extension = ".vcf.gz"
-bgzip -c $1 > {$1}{$extension}
+bgzip -c $1 > ${1}${extension}

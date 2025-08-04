@@ -41,12 +41,39 @@ def split_TSV_by_chromosome(catTSVFixed: str):
   for i in range(1, 23): 
     catTSVFixed[catTSVFixed["CHR"] == i].to_csv(f"chr{i}_{catTSVFixed}", sep=" ", index=False)
 
-def get_bayesian_PRS(chrom: int, bed: str, stats: str):
-  '''Returns the bayesian PRS array for a single chromosome. Can be looped for every chromosome'''
+def get_bayesian_PRS_single(chrom: int, bed: str, stats: str):
+  '''Returns the bayesian PRS array for a single chromosome. Can be looped for every chromosome
+
+  Parameters: 
+  chrom: The chromosome (1-22) that you want to perform a PRS on. 
+  bed: The directory where your BED, BIM, and FAM files are located for the given data. Allows for
+  wildcard expressions. 
+  stats: This should be the properly labeled chromosome file outputted from splt_TSV_by_chromosome()
+  '''
   gdl = mgp.GWADataLoader(bed_files = bed, sumstats_files = stats, sumstats_format = "GWASCatalog")
   gdl.compute_ld(estimator="sample", output_dir="output")
   v = vp.VIPRS(gdl)
   v.fit()
   results = v.predict()
   return results 
+  
+def get_bayesian_PRS_all(bed: str, stats: str):
+  '''Returns the bayesian PRS for all chromosomes and outputs them in a data frame for easy 
+  linear combinations. 
+
+  Parameters:
+  bed: The directory where your BED, BIM, and FAM files are located for the given data. Allows for
+  wildcard expressions. 
+  stats: This should be the properly labeled chromosome file outputted from splt_TSV_by_chromosome()
+  '''
+  data_frames = []
+  for i in range(1, 23):
+    results = get_bayesian_PRS_single(i, bed, stats)
+    df = pd.DataFrame(results).rename(columns = {0: f"chr{i}"})
+    data_frames.append(df)
+  prs_matrix = pd.concat(data_frames)
+  return prs_matrix 
+    
+    
+    
   

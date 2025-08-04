@@ -27,7 +27,7 @@ def clean_gwas_cat(catTSV: str):
                                 'Effect': 'BETA',
                                 'StdErr': 'SE',
                                 'P-value': 'P'})
-  return catTSVFixed
+  return catTSV
 
 def split_TSV_by_chromosome(catTSVFixed: str):
   '''

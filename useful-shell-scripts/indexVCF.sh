@@ -2,6 +2,6 @@
 
 module load Bioinformatics 
 module load samtools 
-module load tabix 
+module load htslib
 
 tabix -p vcf $1 

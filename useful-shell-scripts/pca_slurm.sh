@@ -15,7 +15,9 @@ bcftools view merged_A.bcf -Oz -o merged_A.vcf.gz || { echo "bcftools failed"; e
 
 tabix -p vcf merged_A.vcf.gz || { echo "tabix failed"; exit 1; }
 
-plink --vcf merged_A.vcf.gz --make-bed --out merged_A || { echo "plink conversion failed"; exit 1; }
+bcftools view -e 'REF=ALT' merged_A.vcf.gz -Oz -o merged_A_cleaned.vcf.gz
+bcftools index merged_A_cleaned.vcf.gz
+plink --vcf merged_A_cleaned.vcf.gz --make-bed --out merged_A
 
 rm merged_A.bcf 
 rm merged_A.vcf.gz 

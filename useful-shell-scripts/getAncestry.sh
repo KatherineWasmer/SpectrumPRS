@@ -20,6 +20,7 @@ file=$(sed -n "$((SLURM_ARRAY_TASK_ID + 1))p" sorted_files.txt)
 echo "Processing $file..."
 
 base=$(basename "$file" .vcf.gz)
+tabix -p vcf "$file"
 
 # rename chromosomes for AEon format 
 renamed_chr_file="GSE178204_RAW/${base}_chr.vcf.gz"

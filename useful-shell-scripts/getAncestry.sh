@@ -8,6 +8,10 @@
 
 cd ~/Capstone
 
+module load Bioinformatics 
+module load bcftools 
+module load bedtools 
+
 # Get sorted files for this task in GrCh37 format 
 file=$(sed -n "$((SLURM_ARRAY_TASK_ID + 1))p" sorted_files.txt)
 echo "Processing $file..."

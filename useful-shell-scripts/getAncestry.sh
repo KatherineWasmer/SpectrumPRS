@@ -12,6 +12,8 @@ cd ~/Capstone
 module load Bioinformatics 
 module load bcftools 
 module load bedtools2/2.31.1-zl7ag5
+module load samtools 
+module load htslib 
 
 # Get sorted files for this task in GrCh37 format 
 file=$(sed -n "$((SLURM_ARRAY_TASK_ID + 1))p" sorted_files.txt)
@@ -20,12 +22,13 @@ echo "Processing $file..."
 base=$(basename "$file" .vcf.gz)
 
 # rename chromosomes for AEon format 
-renamed_chr_file = "GSE178204_RAW/${base}_chr.vcf.gz"
-bcftools annotate --rename-chrs rename_chr.txt -Oz -o $renamed_chr_file $file
+renamed_chr_file="GSE178204_RAW/${base}_chr.vcf.gz"
+bcftools annotate --rename-chrs rename_chr.txt -Oz -o "$renamed_chr_file" "$file"
+tabix -p vcf "$renamed_chr_file"
 
 # intersect allele frequencies with given SNPs 
-intersected_file = "${base}_intersectedAFs.txt"
-bedtools intersect -a g1k_allele_freqs.txt -b A106109_cleaned_chr.vcf.gz -header > $intersected_file
+intersected_file="${base}_intersectedAFs.txt"
+bedtools intersect -a g1k_allele_freqs.txt -b "$renamed_chr_file" -header > $intersected_file
 
 # run ancestry 
-aeon $renamed_chr_file -o $base -a $intersected_file
+aeon "$renamed_chr_file" -o "$base" -a "$intersected_file"

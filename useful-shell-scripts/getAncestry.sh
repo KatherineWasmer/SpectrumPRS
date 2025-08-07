@@ -5,12 +5,13 @@
 #SBATCH --array=0-9
 #SBATCH --time=2:00:00
 #SBATCH --mem=8G
+#Disclaimer: File was written with the help of ChatGPT. 
 
 cd ~/Capstone
 
 module load Bioinformatics 
 module load bcftools 
-module load bedtools 
+module load bedtools2/2.31.1-zl7ag5
 
 # Get sorted files for this task in GrCh37 format 
 file=$(sed -n "$((SLURM_ARRAY_TASK_ID + 1))p" sorted_files.txt)

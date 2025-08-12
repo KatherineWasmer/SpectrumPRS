@@ -52,4 +52,22 @@ def idat_to_map(processed_file, merged_rsids, manifest_file, map_file_name: str)
     to_map.to_csv(map_file_name, sep = " ", index=False, header=False)
     
 
-def idat_to_ped(): 
+def idat_to_ped(output_file): 
+    ped_rows = []
+    for sid in sample_ids:
+        row = ['0', sid, '0', '0', '0', '-9']  # default FID, IID, PID, MID, SEX, PHENO
+        for i, gt in enumerate(genotypes_T.loc[sid]):
+            a1 = merged_autosomes.iloc[i]['AlleleA']  
+            a2 = merged_autosomes.iloc[i]['AlleleB']
+            if (gt == "AA"): 
+                row += [a1, a1]
+            elif (gt == "AB"):  
+                row += [a1, a2]
+            elif (gt == "BB"): 
+                row += [a2, a2]
+            else:
+                row += ['0', '0']  # missing genotype
+        ped_rows.append(row)
+    ped_df = pd.DataFrame(ped_rows)
+    ped_df.iloc[:, 5] = phenos["code"]
+    ped_df.to_csv(output_file, sep=" ", index=False, header=False)

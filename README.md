@@ -12,8 +12,8 @@ This is the source code for my MDS Capstone project at the University of Michiga
 - Controls: n = 124
 
 [LaSalle Dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi)
-- Cases: n = 41 
-- Controls: n = 15
+- Cases: n = 29
+- Controls: n = 26
 
 ## Cloud Computing Resources ☁️
 

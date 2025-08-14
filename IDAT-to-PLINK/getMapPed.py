@@ -4,7 +4,7 @@ def remove_brackets(df, value):
     '''Helper function for separating alleles in [A/A], [A/B], or [B/B] format 
     Useful for converting to PED.'''
     df[value] =  df[value].apply(lambda x: x.replace('[','').replace(']',''))
-    return(df)
+    return df
 
 def get_merged_file(processed_file: str, merged_rsids: str, manifest_file: str):
     '''
@@ -27,7 +27,7 @@ def get_merged_file(processed_file: str, merged_rsids: str, manifest_file: str):
     merged_v2 = pd.merge(manifestKeeps, merged_v1, left_on=["Name"], 
                       right_on=["refsnp_id"])
     merged_autosomes = merged_new[~merged_new["Chr_x"].isin(["X", "XY", "Y", "MT"])]
-    return(merged_autosomes)
+    return merged_autosomes
     
 
 def idat_to_map(processed_file, merged_rsids, manifest_file, map_file_name: str) -> None:
@@ -50,13 +50,35 @@ def idat_to_map(processed_file, merged_rsids, manifest_file, map_file_name: str)
     cols = [df.iloc[:, 1].name, df.iloc[:, 0].name, "new", df.iloc[:, 2].name]
     to_map = df.reindex(columns=cols)
     to_map.to_csv(map_file_name, sep = " ", index=False, header=False)
+
+def get_Gtype_matrix(merged_autosomes):
+    '''Returns a transposed data frame with 1 individual per row''' 
+    genotype_cols = [col for col in merged_autosomes.columns if 'GType' in col]
+    remove_brackets(merged_autosomes, "Alleles")
+    # get A and B alleles 
+    alleles = merged_autosomes["Alleles"].str.split("/", expand=True)    
+    merged_autosomes['AlleleA'] = alleles[0] 
+    merged_autosomes['AlleleB'] = alleles[1] 
+    genotypes_T = merged_autosomes[genotype_cols].T # transpose df so that each row represents an ID 
+    sample_ids = genotypes_T.index.tolist()
+    sample_ids = [s.replace(".GType", "") for s in sample_ids]
+    genotypes_T.index = sample_ids # replace genotype index with sample IDs
+    genotypes_T.columns = merged_autosomes["refsnp_id"].tolist() 
+    return genotypes_T
     
-# needs to be fixed 
-def idat_to_ped(output_file): 
+
+def idat_to_ped(merged_autosomes):
+    '''
+    Returns a converted IDAT file to PED format. 
+
+    Parameters: 
+    merged_autosomes -- This is the file returned from get_merged_file(...)
+    '''
     ped_rows = []
     for sid in sample_ids:
-        row = ['0', sid, '0', '0', '0', '-9']  # default FID, IID, PID, MID, SEX, PHENO
-        for i, gt in enumerate(genotypes_T.loc[sid]):
+        row = ['0', sid, '0', '0', '0', '-9']
+        # ChatGPT was used to help with iterating through each row of the data frame 
+        for i, gt in enumerate(genotypes_T.loc[sid]):  
             a1 = merged_autosomes.iloc[i]['AlleleA']  
             a2 = merged_autosomes.iloc[i]['AlleleB']
             if (gt == "AA"): 
@@ -68,6 +90,4 @@ def idat_to_ped(output_file):
             else:
                 row += ['0', '0']  # missing genotype
         ped_rows.append(row)
-    ped_df = pd.DataFrame(ped_rows)
-    ped_df.iloc[:, 5] = phenos["code"]
-    ped_df.to_csv(output_file, sep=" ", index=False, header=False)
+    return pd.DataFrame(ped_rows)

@@ -51,7 +51,7 @@ def idat_to_map(processed_file, merged_rsids, manifest_file, map_file_name: str)
     to_map = df.reindex(columns=cols)
     to_map.to_csv(map_file_name, sep = " ", index=False, header=False)
     
-
+# needs to be fixed 
 def idat_to_ped(output_file): 
     ped_rows = []
     for sid in sample_ids:

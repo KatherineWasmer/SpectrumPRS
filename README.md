@@ -1,5 +1,5 @@
 # Polygenic Risk Scoring for ASD 
-This is the source code for my MDS Capstone project at the University of Michigan. 
+This is the source code for my MDS Capstone project at the University of Michigan. This repo will be subject to occasional updates to fix bugs in my code or add new information. 
 
 ## Data sets and sampling  
 

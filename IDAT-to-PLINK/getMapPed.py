@@ -67,15 +67,16 @@ def get_Gtype_matrix(merged_autosomes):
     return genotypes_T
     
 
-def idat_to_ped(merged_autosomes):
+def idat_to_ped(merged_autosomes, genotypes_T):
     '''
     Returns a converted IDAT file to PED format. 
 
     Parameters: 
     merged_autosomes -- This is the file returned from get_merged_file(...)
+    genotypes_T -- This is the files returned from get_Gtype_matrix(...)
     '''
     ped_rows = []
-    for sid in sample_ids:
+    for sid in genotypes_T.index:
         row = ['0', sid, '0', '0', '0', '-9']
         # ChatGPT was used to help with iterating through each row of the data frame 
         for i, gt in enumerate(genotypes_T.loc[sid]):  

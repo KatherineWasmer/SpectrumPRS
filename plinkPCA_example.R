@@ -1,4 +1,4 @@
-# for this PCA, we will be using the file https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr3.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz
+# for this PCA (only using Chromosome 3), we will be using the file https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr3.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz
 # Upload this file to your Galaxy account and rename it chr3.vcf.gz and create a session in R 
 # Add this file to the galaxy_inputs folder in your R session 
 

@@ -3,8 +3,15 @@
 # Add this file to the galaxy_inputs folder in your R session 
 
 # OPTIONAL: install plink 
-system("wget -P ~/bin/ https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20231211.zip")
-system("unzip ~/bin/plink_linux_x86_64_20231211.zip -d ~/bin/")
+install_plink <- function(){
+  system("wget -P ~/bin/ https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20231211.zip")
+  system("unzip ~/bin/plink_linux_x86_64_20231211.zip -d ~/bin/")
+}
+
+create_bed <- function(filename){
+  system(paste("~/bin/plink --vcf galaxy_inputs/ ", filename, " --make-bed --out chr3"))
+}
+
 
 system("~/plink --vcf galaxy_inputs/chr3.vcf.gz --make-bed --out chr3") 
 system("~/plink --bfile chr3 --keep-allele-order --pca 20 --out chr3PCA") # outputs a file called chr3PCA.eigenvec 

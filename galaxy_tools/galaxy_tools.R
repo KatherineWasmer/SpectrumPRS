@@ -4,6 +4,10 @@ library(glue)
 library(ggplot2)
 library(viridis)
 
+# TO-DOs: test with different cases and error handling 
+# update to glados package if possible 
+# -----------------------------------------------------------------
+
 # OPTIONAL: install plink version 1.9 
 install_plink <- function(){
   system("wget -P ~/bin/ https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20231211.zip")

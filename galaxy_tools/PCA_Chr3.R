@@ -2,18 +2,22 @@
 # Upload this file to your Galaxy account and rename it chr3.vcf.gz and create a session in R 
 # Add this file to the galaxy_inputs folder in your R session 
 
-# OPTIONAL: install plink 
+# OPTIONAL: install plink version 1.9 
 install_plink <- function(){
   system("wget -P ~/bin/ https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20231211.zip")
   system("unzip ~/bin/plink_linux_x86_64_20231211.zip -d ~/bin/")
 }
 
-create_bed <- function(filename){
-  system(paste("~/bin/plink --vcf galaxy_inputs/ ", filename, " --make-bed --out chr3"))
+# Updates the file name through the command line. Parameters are in string format, i.e., straight double quotes 
+change_file_name <- function(oldName, newName){
+  system(glue::glue("mv ~/galaxy_inputs/{oldName} ~/galaxy_inputs/{newName}"))
 }
 
+# Returns a BED, BIM, and FAM file for the VCF file 
+create_bed <- function(filename, output_name){
+  system(glue::glue("~/bin/plink --vcf galaxy_inputs/{filename} --make-bed --out {output_name}"))
+}
 
-system("~/plink --vcf galaxy_inputs/chr3.vcf.gz --make-bed --out chr3") 
 system("~/plink --bfile chr3 --keep-allele-order --pca 20 --out chr3PCA") # outputs a file called chr3PCA.eigenvec 
 
 chr3 = read.table("chr3PCA.eigenvec")

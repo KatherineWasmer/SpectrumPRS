@@ -1,6 +1,6 @@
-# for this PCA (only using Chromosome 3), we will be using the file https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr3.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz
-# Upload this file to your Galaxy account and rename it chr3.vcf.gz and create a session in R 
-# Add this file to the galaxy_inputs folder in your R session 
+# Helper functions for running an RStudio session through Galaxy 
+library(stringr)
+library(glue)
 
 # OPTIONAL: install plink version 1.9 
 install_plink <- function(){
@@ -18,7 +18,13 @@ create_bed <- function(filename, output_name){
   system(glue::glue("~/bin/plink --vcf galaxy_inputs/{filename} --make-bed --out {output_name}"))
 }
 
-system("~/plink --bfile chr3 --keep-allele-order --pca 20 --out chr3PCA") # outputs a file called chr3PCA.eigenvec 
+# Returns an output file called {output_name}.eigenvec 
+get_pca <- function(filename, n_components, output_name){
+  system(glue::glue("~/bin/plink --bfile {filename} --keep-allele-order --pca {n_components} --out {output_name}"))
+}
+
+# ------------------------
+# BELOW: code that needs to be edited 
 
 chr3 = read.table("chr3PCA.eigenvec")
 plot(chr3$V3, chr3$V4) # plot the first two principal components 

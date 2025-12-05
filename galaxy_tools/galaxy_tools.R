@@ -24,7 +24,7 @@ get_pca <- function(filename, n_components, output_name){
 }
 
 # ------------------------
-# BELOW: code that needs to be edited 
+# BELOW: code that needs to be edited/containerized into functions
 
 chr3 = read.table("chr3PCA.eigenvec")
 plot(chr3$V3, chr3$V4) # plot the first two principal components 

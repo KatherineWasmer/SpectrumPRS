@@ -1,6 +1,8 @@
 # Helper functions for running an RStudio session through Galaxy 
 library(stringr)
 library(glue)
+library(ggplot2)
+library(viridis)
 
 # OPTIONAL: install plink version 1.9 
 install_plink <- function(){
@@ -23,26 +25,31 @@ get_pca <- function(filename, n_components, output_name){
   system(glue::glue("~/bin/plink --bfile {filename} --keep-allele-order --pca {n_components} --out {output_name}"))
 }
 
-# ------------------------
-# BELOW: code that needs to be edited/containerized into functions
+# --------------------------------------------------------
+# BELOW: Code that still needs to be tested on the server
 
-chr3 = read.table("chr3PCA.eigenvec")
-plot(chr3$V3, chr3$V4) # plot the first two principal components 
+plot_simple_PCA <- function(pca_output, pca_x, pca_y){
+  eigen = read.table(pca_output)
+  x_dim = pca_x - 2 
+  y_dim = pca_y - 2
+  plot(eigen$x_dim, y_dim) 
+}
 
-ancestries = read.table("galaxy_inputs/samples1KG.panel", header = TRUE) # file can be found at data/samples1KG.panel 
+# Returns a data frame with the IDs from the 1000 Genomes reference panel and their PC coordinates 
+merge_PCA_with_reference <- function(pca_output, reference_panel){
+  ancestries = read.table(reference_panel, header=TRUE) 
+  colnames(ancestries)[1] <- "V1"
+  merged <- merge(pca_output, ancestries, by="V1")
+  return(merged) 
+}
 
-head(ancestries)
-
-colnames(ancestries)[1] <- "V1"
-merged <- merge(chr3, ancestries, by="V1")
-
-library(ggplot2)
-library(viridis) # provides color-blind friendly palettes
-colors = viridis(5)
-super_pop_levels <- c("AFR", "AMR", "EAS", "EUR", "SAS") # color groups by continental level ancestry 
-names(colors) <- super_pop_levels
-
-ggplot(data=merged, aes(x=V3, y=V4, col=super_pop)) + geom_point() + 
-  scale_color_manual(values=colors)
-
-unique(merged$pop)
+plot_clustered_PCA <- function(pca_output, reference_panel, pca_x, pca_y) {
+  merged <- merge_PCA_with_reference(pca_output, reference_panel) 
+  colors <- viridis(5) # update for flexible color palette 
+  super_pop_levels <- c("AFR", "AMR", "EAS", "EUR", "SAS") # color groups by continental level ancestry 
+  names(colors) <- super_pop_levels
+  x_dim = glue::glue(V{pca_x - 2})
+  y_dim = glue::glue(V{pca_y - 2}) 
+  ggplot(data=merged, aes(x=x_dim, y=y_dim, col=super_pop)) + geom_point() + 
+    scale_color_manual(values=colors)
+}

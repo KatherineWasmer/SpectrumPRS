@@ -1,7 +1,7 @@
 # Helper functions for PLINK/vcf data handling 
 import pandas as pd 
 
-def get_new_ids(id_with_underscores: str) -> str:
+def remove_underscores_from_ids(id_with_underscores: str) -> str:
     '''Removes any underscores from the individual ids in the .fam file
 
     Parameters: 

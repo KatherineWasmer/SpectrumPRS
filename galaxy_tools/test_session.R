@@ -10,3 +10,5 @@ glados::galaxy_create_bed("chr1.vcf.gz", "chr1")
 get_pca <- function(filename, n_components, output_name){
   system(glue::glue("~/bin/plink --bfile {filename} --keep-allele-order --pca {n_components} --out {output_name}"))
 }
+
+get_pca("chr1", 25, "chr1")

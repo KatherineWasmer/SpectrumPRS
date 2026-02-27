@@ -1,0 +1,18 @@
+Processing A103664.vcf.gz...
+*** AEON -- Ancestry Estimation ***
+
+Extracting genotypes ...
+
+Making PCA visualisation ... 
+Estimating membership for sample A103664 ...
+
+                ------------ SUMMARY ------------
+                 A103664
+Superpopulation         
+AFR                 0.13
+AMR                 0.10
+EAS                 0.00
+EUR                 0.04
+SAS                 0.71
+See outfiles for further details.
+

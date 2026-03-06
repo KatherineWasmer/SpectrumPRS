@@ -1,10 +1,9 @@
 import glob
 import pandas as pd
 
-# set random seed for consistency 
 np.random.seed(42) 
 
-# Data cleaning and handling 
+# Functions for cleaning and handling GWAS data 
 
 def clean_gwas_cat(catTSV: str):
   '''Reads in a .tsv file downloaded from GWASCatalog and converts it into a format compatible with VIPRS and magenpy. 
@@ -40,8 +39,7 @@ def split_TSV_by_chromosome(catTSVFixed: str):
   for i in range(1, 23): 
     catTSVFixed[catTSVFixed["CHR"] == i].to_csv(f"chr{i}_{catTSVFixed}", sep=" ", index=False)
 
-# Computing PRS 
-
+# FUNCTIONS for analyzing the polygenic risk scores returned for each chromosome. 
 
 def get_PRS_files(filePath: str) -> list:
     '''Returns a list of data frames for each .prs file in the directory. File path should

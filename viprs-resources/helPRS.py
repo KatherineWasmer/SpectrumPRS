@@ -3,7 +3,8 @@ import pandas as pd
 
 np.random.seed(42) 
 
-# Functions for cleaning and handling GWAS data 
+# Functions for cleaning and preprocessing GWAS data. 
+# Please run these functions (if necessary) BEFORE conducting the polygenic risk scores. 
 
 def clean_gwas_cat(catTSV: str):
   '''Reads in a .tsv file downloaded from GWASCatalog and converts it into a format compatible with VIPRS and magenpy. 
@@ -55,7 +56,7 @@ def get_PRS_files(filePath: str) -> list:
 
 def get_PRS_df(filePath: str) -> pd.DataFrame: 
     '''Reads in the PRS for each chromosome and assigns it to an identifiable column name.
-    Returns a data frame of 22 scores with corresponding IDs.
+    Returns a data frame of 22 scores with corresponding IDs. 
     
     Parameters: 
     filePath: The directory for all of your prs files. 

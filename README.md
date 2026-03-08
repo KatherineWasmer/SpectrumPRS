@@ -28,8 +28,3 @@ https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE221098
 ### American Dataset (29 cases, 26 controls) 
 
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE178204
-
-## Cloud Computing Resources ☁️
-
-- Great Lakes: I found this cluster to be especially useful when working with command lines (see next section), particularly with PLINK.
-- Galaxy: This solves the issue of waiting for hours for your Python or R job to start in Great Lakes! You can sign up with your university (or any other) Google account and get 250 GB of free storage. Galaxy includes R (4.4) and Bioconductor (3.12), which saves the trouble of installing Bioconductor dependencies on your Great Lakes cluster. 

@@ -4,7 +4,7 @@ This repository outlines the machine learning lifecycle for my capstone project,
 ## Table of Contents 
 [Defining the Problem](https://github.com/KatherineWasmer/SpectrumPRS/blob/main/README.md#1-defining-the-problem)
 
-[Data Collection](https://github.com/KatherineWasmer/SpectrumPRS/tree/main?tab=readme-ov-file#2-data-collection)
+[Data Collection](https://github.com/KatherineWasmer/SpectrumPRS/blob/main/README.md#2-data-collection)
 
 [Data Cleaning & Preprocessing](https://github.com/KatherineWasmer/SpectrumPRS/tree/main?tab=readme-ov-file#3-data-cleaning--preprocessing)
 

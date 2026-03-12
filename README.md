@@ -11,11 +11,18 @@ Autism spectrum disorder (ASD) is a complex condition that does not have a singl
 
 **Score:** At each marker, we multiply the effect size by the count of risk alleles (0, 1, or 2). The summation across all markers returns the polygenic risk score. 
 
+
+$PRS_{j} = \sum_{i=0}^{n}\beta_{i}x_{ij}$, where j denotes a single individual within the cohort. 
+
 Using the PRS to predict the risk of autism, however, comes with its limitations. These variants are not usually causal, and the patterns of correlation between these genetic variants differ among different ancestral groups. Moreover, GWAS samples are ***heavily European***, which means that scores for individuals of non-European ancestry may not actually be accurate. My project aimed to study the portability of the PRS across underrepresented populations, and quantifying the accuracy of scores across these groups. 
 
 ## 2. Data collection 
 
 Finding publicly available genomic datasets is not an easy task. Although I requested data from the Michigan Genomics Institute and filled out an IRB application, the duration of my project made it impossible to acquire this data. As an alternative, I collected data from published studies through the National Center for Biotechnology Information (NCBI). I used 3 different studies for my data collection, obtaining a sample of n = 320 individuals. 
+
+### American Dataset (29 cases, 26 controls) 
+
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE178204
 
 ### Japanese Data (68 cases, 124 controls) 
 
@@ -25,8 +32,20 @@ https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE144918
 
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE221098
 
-### American Dataset (29 cases, 26 controls) 
+## 3. Data Cleaning & Preprocessing 
 
-https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE178204
+1. Lift over any genotype data in GRCh38 form to GRCh37. For this project, the American dataset was in build GRCh38 and needed to be converted. Here is an example script from my terminal on the Great Lakes computing cluster: 
 
-## (Sections 3-10 to be added) 
+```
+(base) [kwasmer@gl-login2 Capstone]$ ./hg38ToHg19.sh LaSalle/A102092.vcf.gz
+
+--> returns an indexed, sorted file with the name LaSalle/A102092_lifted_sorted.vcf.gz
+```
+
+2. Convert all files to VCF. I have a script for converting IDAT files (e.g., the Saudi dataset) into a PLINK-compatible format.
+3. Normalize all datasets to the hg19 fasta file to avoid reference mismatches
+5. Reduce the datasets to only the 22 autosomes (excluding X and Y chromosomes for this project).
+6. Index all of the datasets for merging.
+7. Merge the files on the Galaxy server in BCF to conserve storage (screenshot will be added later).
+8. Convert BCF file back to VCF in the command line.
+9. Create a PLINK binary file for the merged data 

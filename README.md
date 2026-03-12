@@ -1,6 +1,12 @@
 # Polygenic Risk Scoring for ASD 
 This repository outlines the machine learning lifecycle for my capstone project, which was conducted from May 2025 to August 2025. I will make occasional updates to refine my code and to organize the repository for the most user-friendly experience. 
 
+## Table of Contents 
+[Defining the Problem](https://github.com/KatherineWasmer/SpectrumPRS/blob/main/README.md#1-defining-the-problem)
+[Data Collection](https://github.com/KatherineWasmer/SpectrumPRS/tree/main?tab=readme-ov-file#2-data-collection)
+[Data Cleaning & Preprocessing](https://github.com/KatherineWasmer/SpectrumPRS/tree/main?tab=readme-ov-file#3-data-cleaning--preprocessing)
+
+
 ## 1. Defining the Problem 
 
 Autism spectrum disorder (ASD) is a complex condition that does not have a single cause, but studies show that the majority of causal factors are genetic. One way to measure an individual's genetic predisposition to having ASD is to calculate their ***polygenic risk score*** (PRS). Let's break down what this term means, word by word. 

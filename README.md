@@ -46,7 +46,9 @@ These steps can be replicated in the Great Lakes HPC cluster or the Galaxy bioin
 
 ```
 git clone https://github.com/KatherineWasmer/SpectrumPRS
+```
 
+```
 > Cloning into 'SpectrumPRS'...
 remote: Enumerating objects: 559, done.
 remote: Counting objects: 100% (89/89), done.
@@ -56,12 +58,16 @@ Receiving objects: 100% (559/559), 1.13 MiB | 5.06 MiB/s, done.
 Resolving deltas: 100% (253/253), done.
 ```
 
-1. Lift over any genotype data in GRCh38 form to GRCh37. For this project, the American dataset was in build GRCh38 and needed to be converted.
-
-  
+#### Lift over genotype data from GRCh38 to the more commonly used GRCh37 build. 
+```
+# Install any necessary dependencies
+# TO-DO: add commands for installing PLINK, bcftools, etc. in the terminal 
+pip3 install Crossmap
+./useful-shell-scripts/hg38ToHg19.sh {replace with your vcf.gz file}
+```
 
 2. Convert all files to VCF. I have a script for converting IDAT files (e.g., the Saudi dataset) into a PLINK-compatible format.
-4. Normalize all datasets to the hg19 fasta file to avoid reference mismatches
+4. Normalize all datasets to the hg19 fasta file to avoid reference mismatches (**TO-DO:** upload the hg19 fasta file and an example vcf.gz file)
 5. Reduce the datasets to only the 22 autosomes (excluding X and Y chromosomes for this project).
 6. Index all of the datasets for merging.
 7. Merge the files on the Galaxy server in BCF to conserve storage.

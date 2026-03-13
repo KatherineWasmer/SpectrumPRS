@@ -42,16 +42,26 @@ https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE221098
 
 ## 3. Data Cleaning & Preprocessing 
 
-1. Lift over any genotype data in GRCh38 form to GRCh37. For this project, the American dataset was in build GRCh38 and needed to be converted. Here is an example script from my terminal on the Great Lakes computing cluster: 
+These steps can be replicated in the Great Lakes HPC cluster or the Galaxy bioinformatics server. Both of these are excellent choices for handling genotype data, since VCF files are typically greater than 1 GB and take up a lot of space on your local machine. If you wish to utilize any of the helper functions for genotype preprocessing, please clone the repository in your terminal (Bash). 
 
 ```
-(base) [kwasmer@gl-login2 Capstone]$ ./hg38ToHg19.sh LaSalle/A102092.vcf.gz
+git clone https://github.com/KatherineWasmer/SpectrumPRS
 
---> returns an indexed, sorted file with the name LaSalle/A102092_lifted_sorted.vcf.gz
+> Cloning into 'SpectrumPRS'...
+remote: Enumerating objects: 559, done.
+remote: Counting objects: 100% (89/89), done.
+remote: Compressing objects: 100% (33/33), done.
+remote: Total 559 (delta 77), reused 56 (delta 56), pack-reused 470 (from 1)
+Receiving objects: 100% (559/559), 1.13 MiB | 5.06 MiB/s, done.
+Resolving deltas: 100% (253/253), done.
 ```
+
+1. Lift over any genotype data in GRCh38 form to GRCh37. For this project, the American dataset was in build GRCh38 and needed to be converted.
+
+  
 
 2. Convert all files to VCF. I have a script for converting IDAT files (e.g., the Saudi dataset) into a PLINK-compatible format.
-3. Normalize all datasets to the hg19 fasta file to avoid reference mismatches
+4. Normalize all datasets to the hg19 fasta file to avoid reference mismatches
 5. Reduce the datasets to only the 22 autosomes (excluding X and Y chromosomes for this project).
 6. Index all of the datasets for merging.
 7. Merge the files on the Galaxy server in BCF to conserve storage.

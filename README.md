@@ -59,6 +59,14 @@ Receiving objects: 100% (559/559), 1.13 MiB | 5.06 MiB/s, done.
 Resolving deltas: 100% (253/253), done.
 ```
 
+If you are not on a server where PLINK and bcftools are already installed, please run the following commands in your terminal: 
+
+```
+# install PLINK 1.9 
+wget -P ~/bin/ https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20231211.zip
+unzip ~/bin/plink_linux_x86_64_20231211.zip -d ~/bin/
+```
+
 When working with different genotype datasets, you should choose a default **build** and **file type**. All files should be converted to your selected format to perform accurate analyses. 
 
 |      Dataset properties       | American | Japanese | Saudi |
@@ -69,8 +77,6 @@ When working with different genotype datasets, you should choose a default **bui
 
 #### Lift over genotype data from GRCh38 to the more commonly used GRCh37 build. 
 ```
-# Install any necessary dependencies
-# TO-DO: add commands for installing PLINK, bcftools, etc. in the terminal 
 pip3 install Crossmap
 ./useful-shell-scripts/hg38ToHg19.sh {replace with your vcf.gz file}
 ```

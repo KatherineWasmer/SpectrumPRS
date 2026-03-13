@@ -49,7 +49,8 @@ git clone https://github.com/KatherineWasmer/SpectrumPRS
 ```
 
 ```
-> Cloning into 'SpectrumPRS'...
+# Expected output 
+> Cloning into 'SpectrumPRS'... 
 remote: Enumerating objects: 559, done.
 remote: Counting objects: 100% (89/89), done.
 remote: Compressing objects: 100% (33/33), done.
@@ -57,6 +58,14 @@ remote: Total 559 (delta 77), reused 56 (delta 56), pack-reused 470 (from 1)
 Receiving objects: 100% (559/559), 1.13 MiB | 5.06 MiB/s, done.
 Resolving deltas: 100% (253/253), done.
 ```
+
+When working with different genotype datasets, you should choose a default **build** and **file type**. All files should be converted to your selected format to perform accurate analyses. 
+
+|      Dataset properties       | American | Japanese | Saudi |
+|:-----------------------------:|:--------:|----------|:-----:|
+|         GRCh37 build?         |    NO    |    YES   |   NO  |
+| In Variant Call Format (VCF)? |    YES   |    YES   |   NO  |
+
 
 #### Lift over genotype data from GRCh38 to the more commonly used GRCh37 build. 
 ```

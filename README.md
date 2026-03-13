@@ -54,6 +54,10 @@ https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE221098
 3. Normalize all datasets to the hg19 fasta file to avoid reference mismatches
 5. Reduce the datasets to only the 22 autosomes (excluding X and Y chromosomes for this project).
 6. Index all of the datasets for merging.
-7. Merge the files on the Galaxy server in BCF to conserve storage (screenshot will be added later).
+7. Merge the files on the Galaxy server in BCF to conserve storage.
+
+<img width="232" height="200" alt="image" src="https://github.com/user-attachments/assets/2a80c796-f501-4092-82f9-b7c902ecddb4" />
+
+
 8. Convert BCF file back to VCF in the command line.
 9. Create a PLINK binary file for the merged data 

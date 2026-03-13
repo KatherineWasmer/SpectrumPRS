@@ -42,7 +42,7 @@ https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE221098
 
 ## 3. Data Cleaning & Preprocessing 
 
-These steps can be replicated in the Great Lakes HPC cluster or the Galaxy bioinformatics server. Both of these are excellent choices for handling genotype data, since VCF files are typically greater than 1 GB and take up a lot of space on your local machine. If you wish to utilize any of the helper functions for genotype preprocessing, please clone the repository in your terminal (Bash). 
+These steps can be replicated in the Great Lakes HPC cluster or the Galaxy bioinformatics server. Both of these are excellent choices for handling genotype data, since VCF files are typically greater than 1 GB and take up a lot of space on your local machine. If you wish to utilize any of the helper functions for genotype preprocessing, please clone the repository in your terminal.
 
 ```
 git clone https://github.com/KatherineWasmer/SpectrumPRS

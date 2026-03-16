@@ -10,16 +10,18 @@ My independent study examined the predictive power of polygenic risk scoring for
 
 ## Repository Structure
 
+```
 SpectrumPRS/
 │
-├── data/                
-├── notebooks/           
+├── data/         # genotype data, reference panels           
+├── notebooks/    # exploratory data analyses     
 ├── src/                 
-│   ├── preprocessing
+│   ├── preprocessing   
 │   ├── features
 │   ├── models
 │   └── evaluation
-├── scripts/             
-├── results/             
+├── scripts/     # command line scripts to use         
+├── results/     # model outputs       
 └── README.md
+```
 

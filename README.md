@@ -30,4 +30,4 @@ SpectrumPRS/
 
 `data/study_samples.md:` Contains information on the samples in the study. 
 
-`notebook/exploratory_PRS.ipynb:` Before exploring the different methods for calculating the PRS, I ran a sample experiment on the Michigan Imputation Server (v2) with a random set of samples from the HGDP project. This shows the expected distribution of scores given a random sample, but the samples did not contain phenotypes for evaluating predictive power. 
+`notebook/exploratory_PRS.ipynb:` Before exploring the different methods for polygenic risk scoring in autism, I ran a sample experiment on the Michigan Imputation Server (v2) with a random set of samples from the HGDP project. This shows the expected distribution of scores given a random sample, but the samples did not contain phenotypes for evaluating predictive power. 

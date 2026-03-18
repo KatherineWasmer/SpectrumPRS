@@ -26,8 +26,8 @@ SpectrumPRS/
 └── README.md
 ```
 
-`data/hgdp_ref: ` Contains a comparative reference panel from the Human Genome Diversity Project, which was used to help estimate the admixture for the American samples. 
+`data/hgdp_ref:` Contains a comparative reference panel from the Human Genome Diversity Project, which was used to help estimate the admixture for the American samples. 
 
-`data/study_samples.md: ` Contains information on the samples in the study. 
+`data/study_samples.md:` Contains information on the samples in the study. 
 
 `notebook/exploratory_PRS.ipynb:` Before exploring the different methods for calculating the PRS, I ran a sample experiment on the Michigan Imputation Server (v2) with a random set of samples from the HGDP project. This shows the expected distribution of scores given a random sample, but the samples did not contain phenotypes for evaluating predictive power. 

@@ -2,9 +2,17 @@
 
 ### GEO Accession ID: [GSE178204](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE178204)
 
+**Cases:** n = 29
+
+**Controls:** n = 26
+
 # Japanese dataset 
 
 ### GEO Accession ID: [GSE144918](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE144918) 
+
+**Cases:** n = 68
+
+**Controls:** n = 124
 
 📌 This data was converted to PLINK binary format by Genarchivist user "teepean" with [gtc2vcf](https://github.com/freeseek/gtc2vcf) 
 
@@ -15,3 +23,7 @@
 # Saudi dataset 
 
 ### GEO Accession ID: [GSE221098](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE221098)
+
+**Cases:** n = 22
+
+**Controls:** n = 51

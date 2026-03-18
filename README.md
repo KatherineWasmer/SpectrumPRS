@@ -6,14 +6,14 @@ My independent study examined the predictive power of polygenic risk scoring for
 
 ⚠️ **Project Status:** This repository is under active development to ensure proper documentation and reproducibility of the entire machine learning pipeline. The analyses and results for the project can be found in the Final Report.
 
-**Project Structure** 
-
 ## Repository Structure
 
 ```
 SpectrumPRS/
 │
-├── data/         # genotype data, reference panels           
+├── data/         
+|   ├── hdgp_ref 
+|   ├── study_samples.md            
 ├── notebooks/    # exploratory data analyses     
 ├── src/                 
 │   ├── preprocessing   
@@ -25,3 +25,6 @@ SpectrumPRS/
 └── README.md
 ```
 
+`data/study_samples.md: ` Contains information on the samples in the study. 
+
+`data/hgdp_ref: ` Contains a comparative reference panel from the Human Genome Diversity Project, which was used to help estimate the admixture for the American samples. 
